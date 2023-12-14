@@ -1,0 +1,64 @@
+.main-content {
+    padding: 0 1rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+    
+    list-style: none;
+
+    padding: 0;
+}
+
+.card-none {
+    grid-column: span 4;
+}
+
+.card-new {
+    width: 60px;
+    height: 60px;
+
+    box-shadow: 3px 3px 10px 5px rgb(224, 224, 224);
+}
+
+.card {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 200px;
+    width: auto;
+
+    padding: 1rem;
+
+    box-shadow: 3px 3px 10px 5px rgb(224, 224, 224);
+
+    text-decoration: none;
+}
+
+.card-title {
+    margin: 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+}
+
+.progress-reading {
+    width: 25%;
+
+    background-color: lightcoral;
+    color: white;
+
+    text-align: center;
+}
+
+@media (min-width: 50rem) {
+    .card {
+        grid-column: span 4;
+    }
+}
