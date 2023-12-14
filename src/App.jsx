@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import AddProject from "./components/AddProject";
 
 import "./App.css";
+import Dashbord from "./pages/Dashboard";
 
 function App() {
   const [projectList, setProjectList] = useState([]);
@@ -57,6 +58,7 @@ function App() {
   return (
     <>
       <AddProject projectList={projectList} setProjectList={setProjectList} />
+      <Dashbord projectList={projectList} setProjectList={setProjectList} />
     </>
   );
 }

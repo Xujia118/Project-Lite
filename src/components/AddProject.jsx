@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 
 function AddProject({ projectList, setProjectList }) {
   const dialogRef = useRef();
 
   const [newProject, setNewProject] = useState({
+    id: crypto.randomUUID(),
     name: "",
     description: "",
     deadline: "",
@@ -11,12 +12,14 @@ function AddProject({ projectList, setProjectList }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("New project saved. Use newProject for further processing!")
+    setProjectList([...projectList, newProject ])
+    console.log("New project saved. Use newProject for further processing!");
+    dialogRef.current.close();
   }
 
   return (
     <>
-          <div className="button-container">
+      <div className="button-container">
         <button
           className="create-project-button"
           onClick={() => dialogRef.current.showModal()}
@@ -26,10 +29,7 @@ function AddProject({ projectList, setProjectList }) {
       </div>
 
       <dialog className="dialog" ref={dialogRef}>
-        <form
-          className="create-form"
-          onSubmit={handleSubmit}
-        >
+        <form className="create-form" onSubmit={handleSubmit}>
           <h3 className="form-title">Create a New Project</h3>
 
           <div className="field-container">
@@ -38,7 +38,9 @@ function AddProject({ projectList, setProjectList }) {
               id="project-name"
               type="text"
               value={newProject.name}
-              onChange={(event) => setNewProject({ ...newProject, name: event.target.value})}
+              onChange={(event) =>
+                setNewProject({ ...newProject, name: event.target.value })
+              }
             />
           </div>
           <div className="field-container">
@@ -47,7 +49,12 @@ function AddProject({ projectList, setProjectList }) {
               type="text"
               id="project-description"
               value={newProject.description}
-              onChange={(event) => setNewProject({ ...newProject, description: event.target.value})}
+              onChange={(event) =>
+                setNewProject({
+                  ...newProject,
+                  description: event.target.value,
+                })
+              }
             />
           </div>
           <div className="field-datetime">
@@ -56,7 +63,9 @@ function AddProject({ projectList, setProjectList }) {
               type="date"
               id="project-deadline"
               value={newProject.deadline}
-              onChange={(event) => setNewProject({...newProject, deadline: event.target.value})}
+              onChange={(event) =>
+                setNewProject({ ...newProject, deadline: event.target.value })
+              }
             />
           </div>
 
@@ -72,7 +81,7 @@ function AddProject({ projectList, setProjectList }) {
         </form>
       </dialog>
     </>
-  )
+  );
 }
 
-export default AddProject
+export default AddProject;
