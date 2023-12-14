@@ -20,11 +20,7 @@ function App() {
     });
   }
 
-  // function deleteProject(index) {
-  //   const updatedProjects = [...projectList];
-  //   updatedProjects.splice(index, 1);
-  //   setProjectList(updatedProjects);
-  // }
+
 
   // function editProject(index) {
   //   setNewProject(projectList[index]);
