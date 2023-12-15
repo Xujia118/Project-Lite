@@ -1,14 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
-function AddProject({ projectList, setProjectList }) {
+function AddProject({
+  projectList,
+  setProjectList,
+  newProject,
+  setNewProject,
+}) {
   const dialogRef = useRef();
-
-  const [newProject, setNewProject] = useState({
-    id: "",
-    name: "",
-    description: "",
-    deadline: "",
-  });
 
   function handleSubmit(event) {
     event.preventDefault();

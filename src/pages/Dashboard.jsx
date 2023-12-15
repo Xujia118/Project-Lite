@@ -1,18 +1,35 @@
-function Dashbord({ projectList, setProjectList }) {
-  
+import { useState } from "react";
+
+import EditProject from "../components/EditProject";
+
+function Dashbord({ projectList, setProjectList, newProject, setNewProject }) {
+  const [editingProjectId, setEditingProjectId] = useState(null);
+
   function deleteProject(projectId) {
-    setProjectList(projectList.filter(project => project.id !== projectId));
+    setProjectList(projectList.filter((project) => project.id !== projectId));
   }
 
   return (
     <div>
-      Dashbord
-      {projectList.map((project) => (   // Can't directly show objects. Have to map to each object and display keys.
-        <li key={project.id}>{project.name}
-        <button>Edit</button>
-        <button onClick={() => deleteProject(project.id)}>Delete</button>
-        </li> 
-      ))} 
+      {projectList.length === 0 && "No Project"}
+      {projectList.map((project) =>
+        editingProjectId === project.id ? (
+          <EditProject
+          key={project.id}
+            project={project}
+            newProject={newProject}
+            setNewProject={setNewProject}
+          />
+        ) : (
+          <li key={project.id}>
+            {project.name}
+            <button onClick={() => setEditingProjectId(project.id)}>
+              Edit
+            </button>
+            <button onClick={() => deleteProject(project.id)}>Delete</button>
+          </li>
+        )
+      )}
     </div>
   );
 }
