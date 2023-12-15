@@ -17,13 +17,13 @@ function Dashbord({ projectList, setProjectList, newProject, setNewProject }) {
       {editingProjectId ? (
         <div>
           <EditProject
-            project={projectList.find(
-              (project) => project.id === editingProjectId
-            )}
+            project={projectList.find((project) => project.id === editingProjectId)}
             newProject={newProject}
             setNewProject={setNewProject}
+            editingProjectId={editingProjectId}
+            setEditingProjectId={setEditingProjectId}
           />
-          <button onClick={() => setEditingProjectId(null)}>Cancel</button>
+          
         </div>
       ) : (
         <ul className="cards">
@@ -32,9 +32,7 @@ function Dashbord({ projectList, setProjectList, newProject, setNewProject }) {
               <h3 className="card-title">{project.name}</h3>
               <div className="card-deadline">{project.deadline}</div>
               <div className="card-description">{project.description}</div>
-              <button onClick={() => setEditingProjectId(project.id)}>
-                Edit
-              </button>
+              <button onClick={() => setEditingProjectId(project.id)}>Edit</button>
               <button onClick={() => deleteProject(project.id)}>Delete</button>
             </li>
           ))}

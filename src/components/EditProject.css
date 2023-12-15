@@ -1,1 +1,29 @@
-.
+.main-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+
+    padding: 1rem;
+}
+
+.project-info-bar {
+    grid-column: span 12;
+}
+
+.notes-bar {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+}
+
+.notes-button {
+    list-style: none;
+}
+
+.compose-area {
+    grid-column: span 9;
+    display: flex;
+    flex-direction: column;
+} 
