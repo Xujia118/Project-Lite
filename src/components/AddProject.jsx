@@ -4,7 +4,7 @@ function AddProject({ projectList, setProjectList }) {
   const dialogRef = useRef();
 
   const [newProject, setNewProject] = useState({
-    id: crypto.randomUUID(),
+    id: "",
     name: "",
     description: "",
     deadline: "",
@@ -12,7 +12,21 @@ function AddProject({ projectList, setProjectList }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setProjectList([...projectList, newProject ])
+
+    const newProjectWithId = {
+      ...newProject,
+      id: crypto.randomUUID(),
+    };
+
+    // Don't forget to reset both project list and new project
+    setProjectList([...projectList, newProjectWithId]);
+    setNewProject({
+      id: "",
+      name: "",
+      description: "",
+      deadline: "",
+    });
+
     console.log("New project saved. Use newProject for further processing!");
     dialogRef.current.close();
   }
