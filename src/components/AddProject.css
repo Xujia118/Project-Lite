@@ -33,12 +33,6 @@
     left: 8px
    } 
 
-.create-project-button {
-    border: none;
-
-    background-color: inherit;
-}
-
 .dialog {
     width: 362px;
     height: 60%;

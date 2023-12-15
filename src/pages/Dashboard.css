@@ -1,0 +1,24 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 1rem;
+
+    margin: 0;
+    padding: 1rem;
+}
+
+.card {
+    grid-column: span 12;
+     
+    list-style: none;
+
+    height: 250px;
+
+    border: 1px solid black;
+}
+
+@media (min-width: 44rem) {
+    .card {
+        grid-column: span 4;
+    }
+}

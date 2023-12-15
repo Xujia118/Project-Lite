@@ -12,7 +12,7 @@ function EditProject({ project, newProject, setNewProject }) {
   }
 
   return (
-    <div>
+    <>
       <div className="project-info-bar">
         <h2>{project.name}</h2>
         {project.description}
@@ -27,11 +27,11 @@ function EditProject({ project, newProject, setNewProject }) {
         {noteList.length === 0 && "No notes"}
         {noteList.map((note) => (
           <button className="button nav" key={note.id}>
-            <li >{note.title}</li>
+            <li>{note.title}</li>
           </button>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 
