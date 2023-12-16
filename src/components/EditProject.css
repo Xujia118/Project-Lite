@@ -6,24 +6,58 @@
     padding: 1rem;
 }
 
-.project-info-bar {
+.bar {
     grid-column: span 12;
+    display: flex;
+    justify-content: space-between;
+
+    background-color: white;
+    box-shadow: 3px 3px 3px 1px rgb(208, 208, 208);
+    border-radius: 5px;
+
+    padding: 1rem;
 }
 
-.notes-bar {
+.project-info {
+    margin: 0;
+
+    font-weight: bold;
+}
+
+.bar.notes {
     grid-column: span 3;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 
     padding: 0;
+    margin: 0;
 }
 
-.notes-button {
+.note-item {
     list-style: none;
 }
 
-.compose-area {
+.button-note {
+    font-size: inherit;
+
+    width: 100%;
+    height: auto;
+
+    padding: 1rem 0;
+
+    border: none;
+    border-bottom: 1px solid rgb(218, 218, 218);
+    background-color: inherit;
+}
+
+.button-note:hover {
+    background-color: rgb(232, 232, 232);
+}
+
+.bar.control {
+    justify-content: flex-start;
+}
+
+.note-display-area {
     grid-column: span 9;
-    display: flex;
-    flex-direction: column;
 } 

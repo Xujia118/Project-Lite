@@ -4,8 +4,8 @@ import "./AddNote.css";
 function AddNote({
   noteList,
   setNoteList,
-  editingProjectId,
-  setEditingProjectId,
+  addingNewNote,
+  setAddingNewNote
 }) {
   const [newNote, setNewNote] = useState({
     id: "",
@@ -13,23 +13,28 @@ function AddNote({
     text: "",
   });
 
-  function handleSubmit() {
-    // 以下code和正式code有啥区别？
-    //   setNoteList((prevNoteList) => [...prevNoteList, newNote]);
-    //   setNewNote((prevNote) => ({
-    //     ...prevNote,
-    //     id: crypto.randomUUID(),
-    //     title: "",
-    //     text: "",
-    //   }));
-    // }
+  function handleSubmit(event) {
+    event.preventDefault();
 
-    setNoteList([...noteList, newNote]);
-    setNewNote({ ...newNote, id: crypto.randomUUID(), title: "", text: "" });
+    // Must set the ID first 
+    const updatedNewNote = { ...newNote, id: crypto.randomUUID() };
+
+    // Then update the note list with a new note, it will have the ID we just set
+    setNoteList([...noteList, updatedNewNote]);
+
+    // Then we can reset note
+    setNewNote({
+      id: "",
+      title: "",
+      text: "",
+    })
+
+    // And clear adding state to false
+    setAddingNewNote(false);
   }
 
   return (
-    <>
+    <form className="form-add-note" onSubmit={handleSubmit}>
       <label>
         Note Title:
         <input
@@ -40,6 +45,7 @@ function AddNote({
           }
         />
       </label>
+
       <textarea
         className="compose-area"
         value={newNote.text}
@@ -48,10 +54,9 @@ function AddNote({
         }
       ></textarea>
       <div className="compose-area-button-container">
-        <button onClick={() => setEditingProjectId(null)}>Cancel</button>
-        <button onClick={handleSubmit}>Save</button>
+        <button >Save</button>
       </div>
-    </>
+    </form>
   );
 }
 
